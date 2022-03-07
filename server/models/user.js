@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
-// const validator = require('validator')
+const validator = require('validator')
 
 const userSchema = mongoose.Schema({
     name: {
@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     },
     type: {
         type: String,
-        enum : ['police','judge'],
+        enum : ['police','registrar'],
         required: true,
         trim: true
     },

@@ -5,7 +5,9 @@ const envConfig = {
 require("dotenv").config(envConfig);
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+const passport = require("passport");
+const userRoutes = require("./routes/user");
+const session = require("express-session");
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -20,6 +22,7 @@ app.use((req, res, next) => {
   );
   next();
 });
+const cookieParser = require("cookie-parser");
 
 
 mongoose.connect(process.env.MONGO_URI, (err) => {
@@ -33,6 +36,20 @@ app.listen(process.env.PORT || 5000,()=>{
     console.log(`Server started at port ${process.env.PORT} `)
 })
 
+//passport Setup
+app.use(cookieParser(process.env.SECRET_KEY));
+app.use(
+    session({
+      secret: process.env.SECRET_KEY,
+      resave: true,
+      saveUninitialized: true,
+    })
+  );
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.use(userRoutes);
 
 // Production Setup _ Deployment
 // if (process.env.NODE_ENV === "production") {
