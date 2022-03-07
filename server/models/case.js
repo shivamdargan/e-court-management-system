@@ -9,7 +9,23 @@ const caseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    nameReporter:{
+    idRep:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    nameRep:{
+        type: String,
+        required: true
+    },
+    nameAcc:{
+        type: String,
+        required: true
+    },
+    gender:{
+        type: String,
+        required: true
+    },
+    age:{
         type: String,
         required: true
     },
@@ -23,7 +39,7 @@ const caseSchema = new mongoose.Schema({
     },
     clause:{
         type: String,
-        required: false
+        required: true
     },
     phone:{
         type: Number,
@@ -48,7 +64,15 @@ const caseSchema = new mongoose.Schema({
             type: String,
             required: false
         }
-    ]
+    ],
+    lastHearingDate:{
+        type: Date,
+        required: false
+    },
+    // dangerousCriminal:{
+    //     type: String,
+    //     required: true
+    // },
 });
 
 const Case = mongoose.model('Case', caseSchema);
