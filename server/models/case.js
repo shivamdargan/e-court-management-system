@@ -17,7 +17,7 @@ const caseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    nameAcc:{
+    nameAccused:{
         type: String,
         required: true
     },
@@ -60,7 +60,7 @@ const caseSchema = new mongoose.Schema({
         required:false,
     },
     images:[{
-        type: Buffer,
+        type: String,
         required:false,
     }],
     lastHearingDate:{
@@ -72,6 +72,14 @@ const caseSchema = new mongoose.Schema({
         enum:[1,2,3,4,5],
         required: true
     },
+    status:{
+        type:String,
+        default:"open",
+    },
+    verdict:{
+        type:String,
+        required:false
+    }
 });
 
 const Case = mongoose.model('Case', caseSchema);
