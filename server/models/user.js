@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     },
     type: {
         type: String,
-        enum : ['police','registrar'],
+        enum : ['police','registrar','lawyer','judge'],
         required: true,
         trim: true
     },
@@ -52,7 +52,11 @@ const userSchema = mongoose.Schema({
     {
         type:String,
         required:false,
-    }
+    },
+    noOfCases:{
+        type:Number,
+        required:false
+    }   
 })
 userSchema.pre('save', async function (next) {
 

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 
 const caseSchema = new mongoose.Schema({
     cnr:{
@@ -80,6 +81,14 @@ const caseSchema = new mongoose.Schema({
     verdict:{
         type:String,
         required:false
+    },
+    accusedLawyerName:{
+        type:String,
+        required:false
+    },
+    judgeAssigned:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
     }
 });
 
