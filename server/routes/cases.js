@@ -168,4 +168,18 @@ router.get('/dashboard/profile', auth, async (req,res) => {
 });
 
 
+router.get('/pending/cases',  async (req,res) => {
+ 
+  let cases = await Case.find({status:"open"})
+  res.status(200).send({noOfCases:cases.length});
+
+});
+
+router.get('/dailyFilled/cases',  async (req,res) => {
+
+  const dailyFilledCases = await Case.find({date: {$gt: Date.now() - 86400000 }});
+  res.status(200).send({noOfCases:dailyFilledCases.length});
+
+});
+
 module.exports = router
