@@ -55,6 +55,7 @@ const userSchema = mongoose.Schema({
     },
     noOfCases:{
         type:Number,
+        default:0,
         required:false
     },
     assignedCaseIds:[{
