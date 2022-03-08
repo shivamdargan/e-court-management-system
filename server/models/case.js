@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const caseSchema = new mongoose.Schema({
     cnr:{
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     title:{
         type: String,
@@ -60,7 +61,7 @@ const caseSchema = new mongoose.Schema({
         required:false,
     },
     images:[{
-        type: String,
+        type: Buffer,
         required:false,
     }],
     lastHearingDate:{
