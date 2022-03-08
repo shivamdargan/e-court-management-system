@@ -128,6 +128,12 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
     finalJudge.noOfCases +=1;
     finalJudge.assignedCaseIds.push(cnr);
     await finalJudge.save();      
+    
+    const loggedInUser = await User.findById(req.user._id);
+    loggedInUser.noOfCases +=1;
+    loggedInUser.assignedCaseIds.push(cnr);
+    await loggedInUser.save(); 
+
     res.status(201).send({message:"Case Succesfully Filed",newCase})
     }
     catch (e){
@@ -135,9 +141,8 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
     }
 })
 
-router.get('/profile/judge', auth, async (req,res) => {
-  if(req.user.type === "judge")
-  {
+router.get('/dashboard/profile', auth, async (req,res) => {
+ 
       let profileInfo = req.user;
       let cases = []
       if(req.user.noOfCases > 0)
@@ -159,12 +164,8 @@ router.get('/profile/judge', auth, async (req,res) => {
         cases
       }
       res.status(200).send(profileInfo);
-  }  
-  else
-  {
-    res.status(400).send({message:"Bad Request, Trying To Access Out Of Scope Profile !"})
-  }
   
 });
+
 
 module.exports = router
