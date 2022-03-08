@@ -7,6 +7,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const userRoutes = require("./routes/user");
+const caseRoutes = require("./routes/cases")
 const session = require("express-session");
 const app = express();
 app.use(express.json())
@@ -50,6 +51,7 @@ app.use(passport.session());
 
 
 app.use(userRoutes);
+app.use(caseRoutes);
 
 // Production Setup _ Deployment
 // if (process.env.NODE_ENV === "production") {

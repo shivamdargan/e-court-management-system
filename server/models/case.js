@@ -59,20 +59,19 @@ const caseSchema = new mongoose.Schema({
         type:String,
         required:false,
     },
-    images:[
-        {
-            type: String,
-            required: false
-        }
-    ],
+    images:[{
+        type: Buffer,
+        required:false,
+    }],
     lastHearingDate:{
         type: Date,
         required: false
     },
-    // dangerousCriminal:{
-    //     type: String,
-    //     required: true
-    // },
+    dangerousCriminal:{
+        type: Number,
+        enum:[1,2,3,4,5],
+        required: true
+    },
 });
 
 const Case = mongoose.model('Case', caseSchema);
