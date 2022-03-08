@@ -135,4 +135,36 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
     }
 })
 
+router.get('/profile/judge', auth, async (req,res) => {
+  if(req.user.type === "judge")
+  {
+      let profileInfo = req.user;
+      let cases = []
+      if(req.user.noOfCases > 0)
+      {
+        const judgeCaseIds = req.user.assignedCaseIds;
+        for (const caseId of judgeCaseIds) {
+          
+          const judgeCase = await Case.findOne({cnr:caseId});
+          cases.push({
+            title:judgeCase.title,
+            details:judgeCase.details,
+            clause:judgeCase.clause
+          })
+          
+        }
+      }
+      profileInfo = {
+        ...profileInfo,
+        cases
+      }
+      res.status(200).send(profileInfo);
+  }  
+  else
+  {
+    res.status(400).send({message:"Bad Request, Trying To Access Out Of Scope Profile !"})
+  }
+  
+});
+
 module.exports = router
