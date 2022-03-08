@@ -126,7 +126,8 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
          
     await newCase.save();
     finalJudge.noOfCases +=1;
-    await finalJudge.save();  
+    finalJudge.assignedCaseIds.push(cnr);
+    await finalJudge.save();      
     res.status(201).send({message:"Case Succesfully Filed",newCase})
     }
     catch (e){

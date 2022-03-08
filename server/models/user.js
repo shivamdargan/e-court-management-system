@@ -56,7 +56,11 @@ const userSchema = mongoose.Schema({
     noOfCases:{
         type:Number,
         required:false
-    }   
+    },
+    assignedCaseIds:[{
+        type:String,
+        required:false
+    }]
 })
 userSchema.pre('save', async function (next) {
 
