@@ -1,5 +1,7 @@
 import React from 'react'
 import Calendar from './Calendar.js';
+import Button from '../Button.js';
+import '../../assets/css/dashboard.css';
 
 const Dasboard = () => {
   return (
@@ -7,13 +9,17 @@ const Dasboard = () => {
         <div className='calendar-section'>
             <div className='welcome'>
                 <div className='welcome-info'>
-                    <h1>Welcome</h1>
-                    <p>Barinder Singh</p>
+                    <h1>Welcome,</h1>
+                    <h3>Barinder Singh</h3>
                     <p>Haryana High Court</p>
                 </div>
                 <div className='welcome-ops'>
-                    <button>Schedule</button>
-                    <button>Upload Docs</button>
+                    <div>
+                        <Button content="Schedule" />
+                    </div>
+                    <div>
+                        <Button content="Upload Doc" />
+                    </div>
                 </div>
             </div>
             <Calendar/>

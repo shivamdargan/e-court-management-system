@@ -45,7 +45,7 @@ const SideNav = () => {
                 <img src={profile} width="20px" height="20px"></img>
                 <a>Profile</a>
             </div>
-            <div className='link'>
+            <div className='link logout'>
                 <img src={logout} width="20px" height="20px"></img>
                 <a>Logout</a>
             </div>
