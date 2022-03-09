@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import SignupLawyer from '../components/Signup/SignupLawyer'
+import SignupLawyer from "../components/Signup/SignupLawyer"
 
 const SignupLawyerPage = () => {
   return (

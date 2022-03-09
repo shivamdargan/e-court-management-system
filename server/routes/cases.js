@@ -142,19 +142,88 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
 })
 
 router.get('/dashboard/profile', auth, async (req,res) => {
- 
-      let userId = req.user._id;
-      let profileInfo = await User.findById(userId);
-      console.log(profileInfo);
-      let cases = []
-      let hDate;
+  let userId = req.user._id;
+  let profileInfo = await User.findById(userId);
+  let cases = [] 
+  let hDate; 
+    if(req.user.type === 'judge'){
+      
+      if(profileInfo.noOfCases > 0)
+      {
+        const judgeCaseIds = profileInfo.assignedCaseIds;
+        const myMap = new Map();
+        for (const caseId of judgeCaseIds) {
+          
+          const judgeCase = await Case.findOne({cnr:caseId});
+          const dCriminal = judgeCase.dangerousCriminal;
+          const date = judgeCase.date;
+          let diff;
+          // if(judgeCase.lastHearingDate){
+            // diff = Math.floor((judgeCase.lastHearingDate - date)/(24*60*60*1000));
+          // }else{
+            diff = Math.floor((Date.now() - date)/(24*60*60*1000));
+          // }
+          const ml = require('../ml');
+          ml.start(dCriminal, diff, async function(result) {
+            
+              result = result.replace("[", "").replace("]", "")
+              result = parseFloat(result);
+              console.log('hello',result, typeof(result));
+              myMap.set(judgeCase, result);
+              console.log(myMap.values());
+            
+          })
+          
+        }
+        setTimeout(function() {
+
+          console.log('here',myMap.values())
+          // sort by value
+          const mapSort = new Map([...myMap.entries()].sort((a, b) => b[1] - a[1]));
+          // console.log(mapSort);
+
+          let jCases = Array.from( mapSort.keys() );
+          jCases.forEach(jCase => {
+            console.log(jCase.title);
+            if(jCase.hearingDate)
+            {
+              hDate = jCase.hearingDate;
+            }else{
+              hDate = "Hearing Date not assigned yet"
+            }
+            cases.push({
+              title:jCase.title,
+              details:jCase.details,
+              clause:jCase.clause,
+              hearingDate: hDate
+            });
+          });
+
+          console.log("hi",cases);
+          profileInfo = {
+            ...profileInfo,
+            cases
+          }
+          // console.log("Mesasge",profileInfo);
+    
+          // profileInfo.assign(profileInfo,cases)
+          res.status(200).send(profileInfo);
+          
+        },4000)
+      }
+    }else{
+      // let userId = req.user._id;
+      // let profileInfo = await User.findById(userId);
+      // console.log(profileInfo);
+      // let cases = []
+      // let hDate;
       if(profileInfo.noOfCases > 0)
       {
         const judgeCaseIds = profileInfo.assignedCaseIds;
         for (const caseId of judgeCaseIds) {
           
           const judgeCase = await Case.findOne({cnr:caseId});
-          console.log(caseId);
+          // console.log(caseId);
           if(judgeCase.hearingDate)
           {
             hDate = judgeCase.hearingDate;
@@ -170,15 +239,17 @@ router.get('/dashboard/profile', auth, async (req,res) => {
           
         }
       }
-      console.log(profileInfo);
+      // console.log(profileInfo);
       profileInfo = {
         ...profileInfo,
         cases
       }
-      console.log("Mesasge",profileInfo);
-
-      // profileInfo.assign(profileInfo,cases)
+          // console.log("Mesasge",profileInfo);
+    
+          // profileInfo.assign(profileInfo,cases)
       res.status(200).send(profileInfo);
+    }
+    
   
 });
 
@@ -213,7 +284,9 @@ router.post('/add/hearingDate', auth , async (req,res) => {
 
 });
 
+// router.post('/prioritize', auth, async (req, res) => {
 
+// })
 
 
 
