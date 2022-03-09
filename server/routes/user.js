@@ -4,6 +4,7 @@ const passport = require("passport");
 const User = require("../models/user");
 const isAuth = require("../middleware/auth")
 const LocalStrategy = require("passport-local").Strategy;
+const api_helper = require('../api-helper');
 const bcrypt = require("bcryptjs");
 const router = new express.Router()
 
@@ -73,7 +74,15 @@ router.post("/login/localUser", (req, res, next) => {
                 res.send({message: "User already registered"});
                 return ;
             }
-                const newUser = new User(req.body)
+            response = await api_helper.make_API_call(`https://api.opencagedata.com/geocode/v1/json?q=${req.body.location}&key=${process.env.GEOCODER}`)
+            let reqBody = req.body;
+            reqBody = {
+              ...reqBody,
+              latitude:response.results[0].geometry.lat,
+              longitude:response.results[0].geometry.lng
+            }
+            console.log(reqBody);
+                const newUser = new User(reqBody)
                 try{
                     await newUser.save()
                     res.status(201).send({message:"Succesfully Registered",newUser})

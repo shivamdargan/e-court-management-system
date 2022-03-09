@@ -54,20 +54,20 @@ app.use(userRoutes);
 app.use(caseRoutes);
 
 // Production Setup _ Deployment
-// if (process.env.NODE_ENV === "production") {
-//   console.log("prod");
+if (process.env.NODE_ENV === "production") {
+  console.log("prod");
   
-//   app.use(express.static(path.resolve(__dirname, "client","build")));
-//   app.get("/*", function (req, res) {
-//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-//   });
+  app.use(express.static(path.resolve(__dirname, "client","build")));
+  app.get("/*", function (req, res) {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 
-//   // Handle unhandled promise rejections
-//   process.on("unhandledRejection", (err, promise) => {
-//     console.log(`Error: ${err.message}`);
-//   });
+  // Handle unhandled promise rejections
+  process.on("unhandledRejection", (err, promise) => {
+    console.log(`Error: ${err.message}`);
+  });
 
-//   process.on("uncaughtException", (err, promise) => {
-//     console.log(`Error: ${err.message}`);
-//   });
-// }
+  process.on("uncaughtException", (err, promise) => {
+    console.log(`Error: ${err.message}`);
+  });
+}

@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 
 const caseSchema = new mongoose.Schema({
     cnr:{
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     title:{
         type: String,
@@ -17,7 +19,7 @@ const caseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    nameAcc:{
+    nameAccused:{
         type: String,
         required: true
     },
@@ -72,6 +74,22 @@ const caseSchema = new mongoose.Schema({
         enum:[1,2,3,4,5],
         required: true
     },
+    status:{
+        type:String,
+        default:"open",
+    },
+    verdict:{
+        type:String,
+        required:false
+    },
+    accusedLawyerName:{
+        type:String,
+        required:false
+    },
+    judgeAssigned:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }
 });
 
 const Case = mongoose.model('Case', caseSchema);
