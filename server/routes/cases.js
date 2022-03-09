@@ -254,10 +254,11 @@ router.get('/dashboard/profile', auth, async (req,res) => {
 });
 
 
-router.get('/pending/cases',  async (req,res) => {
- 
-  let cases = await Case.find({status:"open"})
-  res.status(200).send({noOfCases:cases.length});
+router.get('/stats/cases',  async (req,res) => {
+  let openCases = await Case.find({status:"open"})
+  let closedCases = await Case.find({status:"closed"})
+  let obj = {openCases:openCases.length, closedCases: closedCases.length};
+  res.status(200).send(obj);
 
 });
 

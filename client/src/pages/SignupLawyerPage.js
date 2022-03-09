@@ -1,8 +1,9 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import SignupLawyer from "../components/Signup/SignupLawyer"
 
-const SignupLawyer = () => {
+const SignupLawyerPage = () => {
   return (
     <div>
         <Navbar/>
@@ -12,4 +13,4 @@ const SignupLawyer = () => {
   )
 }
 
-export default SignupLawyer
+export default SignupLawyerPage

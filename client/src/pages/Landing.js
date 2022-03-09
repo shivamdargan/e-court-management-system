@@ -7,9 +7,12 @@ import About from '../components/About/About';
 import Footer from '../components/Footer';
 
 const Landing = () => {
+
+  const x=1;
+
   return (
     <div className='landing-img'>
-        <Navbar/>
+        <Navbar p={x} />
         <LandingContent/>
         <Stats/>
         <About/>

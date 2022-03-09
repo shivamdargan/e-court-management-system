@@ -10,6 +10,7 @@ import Login from './pages/LoginPage.js';
 import Signuppage from './pages/SignupPage';
 import SignupLawyerPage from './pages/SignupLawyerPage';
 import SignupJudgePage from './pages/SignupJudgePage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
@@ -30,14 +31,14 @@ function App() {
             <Route path="/login">
               <Login/>
             </Route>
-            <Route path="/signUp">
+            <Route path="/signup">
               <Signuppage></Signuppage>
             </Route>
-            <Route path="/signUpLawyer">
+            <Route path="/signuplawyer">
               <SignupLawyerPage/>
             </Route>
-            <Route path="/signUpJudge">
-             <SignupJudgePage/>
+            <Route path="/dashboard">
+             <DashboardPage/>
             </Route>
           </Switch>
         </Router>
