@@ -3,7 +3,7 @@
 .signup{
     display: flex;
     flex-direction: row;
-    height: 90vh;
+    height: 100vh;
 }
 
 .signup-left{
@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: center;
     width: 50%;
-    height: 90vh;
+    height: 105vh;
     /* background-color: cadetblue; */
 }
 
@@ -80,4 +80,15 @@
 
 .signup-a{
     color: #C89A69;
+}
+
+.signuplinks{
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.signuplinks a{
+    margin: 0px 50px;
+    text-decoration: none;
+    color: black;
 }

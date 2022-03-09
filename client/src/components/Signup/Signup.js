@@ -16,11 +16,16 @@ const Signup = () => {
         <div className='signup-right'>
             <div className='signup-box'>
                 <div className='signup-content'>
-                    <h1>Signup</h1>
+                    <div className='signuplinks'>
+                        <a href="./signup" style={{color:"#C89A69", textDecoration: "underline"}}>Signup as Judge</a>
+                        <a href='./signuplawyer'>Signup as Lawyer</a>
+                    </div>
                     <div className='form'>
                         <input className='forminput' type="text" name="name" placeholder='Name'></input>
                         <input className='forminput' type="text" name="email" placeholder='Email'></input>
                         <input className='forminput' type="password" name="password" placeholder='Password'></input>
+                        <input className='forminput' type="text" name="Uid" placeholder='UID'></input>
+                        <input className='forminput' type="text" name="location" placeholder='Court Location'></input>
                     </div>
                     <button className='signupbtn'>
                         Login
