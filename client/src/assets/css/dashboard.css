@@ -16,6 +16,11 @@
     background-color: #484746;
 }
 
+.dashboard-right{
+    display: flex;
+    width: 80%;
+}
+
 .logosection{
     background-color: white;
     width: 100%;
@@ -44,4 +49,64 @@
     color: white;
     margin: 0;
     margin-left: 30px;
+}
+
+.calendar-section{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+}
+
+.welcome{
+    width: 30%;
+}
+
+.welcome-info{
+    border-right: 1px solid black;
+}
+
+.welcome-ops{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-ops button{
+    width: 80%;
+}
+
+.calendar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    /* background-color: #484746; */
+}
+
+.calendar-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.calendar-info p{
+    /* margin: 0; */
+    margin-left: 200px;
+    margin-bottom: 0;
+    color: #7A7A79;
+}
+
+.calendar-info h1{
+    margin-right: 200px;
+    margin-bottom: 0;
+}
+
+.calendar-box{
+    display: flex;
+    height: 90%;
+    width: 90%;
+    background-color: #F8F8F8;
+    border-radius: 10px;
 }
