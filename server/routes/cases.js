@@ -143,26 +143,41 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
 
 router.get('/dashboard/profile', auth, async (req,res) => {
  
-      let profileInfo = req.user;
+      let userId = req.user._id;
+      let profileInfo = await User.findById(userId);
+      console.log(profileInfo);
       let cases = []
-      if(req.user.noOfCases > 0)
+      let hDate;
+      if(profileInfo.noOfCases > 0)
       {
-        const judgeCaseIds = req.user.assignedCaseIds;
+        const judgeCaseIds = profileInfo.assignedCaseIds;
         for (const caseId of judgeCaseIds) {
           
           const judgeCase = await Case.findOne({cnr:caseId});
+          console.log(caseId);
+          if(judgeCase.hearingDate)
+          {
+            hDate = judgeCase.hearingDate;
+          }else{
+            hDate = "Hearing Date not assigned yet"
+          }
           cases.push({
             title:judgeCase.title,
             details:judgeCase.details,
-            clause:judgeCase.clause
+            clause:judgeCase.clause,
+            hearingDate: hDate
           })
           
         }
       }
+      console.log(profileInfo);
       profileInfo = {
         ...profileInfo,
         cases
       }
+      console.log("Mesasge",profileInfo);
+
+      // profileInfo.assign(profileInfo,cases)
       res.status(200).send(profileInfo);
   
 });
@@ -196,5 +211,9 @@ router.post('/add/hearingDate', auth , async (req,res) => {
   res.status(200).send(hearingCase);
 
 });
+
+
+
+
 
 module.exports = router
