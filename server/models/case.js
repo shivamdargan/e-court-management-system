@@ -89,6 +89,10 @@ const caseSchema = new mongoose.Schema({
     judgeAssigned:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
+    },
+    hearingDate:{
+        type:Date,
+        required:false
     }
 });
 

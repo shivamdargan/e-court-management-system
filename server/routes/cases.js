@@ -188,4 +188,13 @@ router.post('/search/cnrNumber',  async (req,res) => {
   res.status(200).send({Case:CNRcase});
 
 });
+
+router.post('/add/hearingDate', auth , async (req,res) => {
+  const hearingCase = await Case.findOne({cnr:req.body.cnr});
+  hearingCase.hearingDate = req.body.hearingDate;
+  await hearingCase.save();
+  res.status(200).send(hearingCase);
+
+});
+
 module.exports = router
