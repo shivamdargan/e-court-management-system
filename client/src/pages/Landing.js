@@ -7,6 +7,7 @@ import About from '../components/About/About';
 import Footer from '../components/Footer';
 
 const Landing = () => {
+
   return (
     <div className='landing-img'>
         <Navbar/>
