@@ -10,7 +10,7 @@ import profile from '../../assets/media/profile.png';
 import logout from '../../assets/media/logout.png';
 import swal from 'sweetalert';
 import URL from '../../URL';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 
 const SideNav = () => {
 
@@ -71,12 +71,16 @@ const SideNav = () => {
         </div>
         <div className='linkssection'>
             <div className='link'>
-                <img src={dashboard} width="20px" height="20px"></img>
-                <a style={btnStyle}>Dashboard</a>
+                <a href='/dashboard'>
+                    <img src={dashboard} width="20px" height="20px"></img>
+                    <a style={btnStyle}>Dashboard</a>
+                </a>
             </div>
             <div className='link'>
-                <img src={cases} width="20px" height="20px"></img>
-                <a>Cases</a>
+                <a href='/cases'>
+                    <img src={cases} width="20px" height="20px"></img>
+                    <a>Cases</a>
+                </a>
             </div>
             <div className='link'>
                 <img src={calendar} width="20px" height="20px"></img>
