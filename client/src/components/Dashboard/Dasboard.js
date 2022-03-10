@@ -51,7 +51,8 @@ useEffect(()=>{
             <Calendar/>
         </div>
         <div className='cases-section'>
-            
+            <Newcases/>
+            <Cases/>
         </div>
     </div>
   )
