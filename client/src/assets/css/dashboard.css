@@ -13,9 +13,11 @@
     align-items: center;
     justify-content: center;
     width: 20%;
-    cursor: pointer;
     color: white;
-    /* position: fixed; */
+    /* position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0; */
 }
 .sidenav a{
     text-decoration: none;
@@ -24,6 +26,7 @@
 .dashboard-right{
     display: flex;
     flex-direction: column;
+    right: 0;
     width: 80%;
     padding-top: 80px;
 }
