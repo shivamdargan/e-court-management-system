@@ -3,6 +3,8 @@ import Calendar from './Calendar.js';
 import Button from '../Button.js';
 import '../../assets/css/dashboard.css';
 import URL from '../../URL.js';
+import Newcases from "../../components/Dashboard/Newcases"
+import Cases from "../../components/Dashboard/Cases"
 
 const Dasboard = () => {
     const [profileData, setProfileData] = useState();
