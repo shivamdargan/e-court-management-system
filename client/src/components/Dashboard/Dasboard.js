@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Calendar from './Calendar.js';
 import Button from '../Button.js';
+import Newcases from './Newcases.js';
 import '../../assets/css/dashboard.css';
 import URL from '../../URL.js';
-import Newcases from "../../components/Dashboard/Newcases";
+// import Newcases from "../../components/Dashboard/Newcases";
+// import Cases from "../../components/Dashboard/Cases";
 
 const Dasboard = () => {
     const [profileData, setProfileData] = useState();
@@ -41,12 +43,12 @@ useEffect(()=>{
                     <p>{(profileData === undefined )? "Loading..." : profileData.location}</p>
                 </div>
                 <div className='welcome-ops'>
-                    <div>
+                    <div className='welcome-btn'>
                         <Button content="Schedule" />
                     </div>
-                    <div>
+                    {/* <div className='welcome-btn'>
                         <Button content="Upload Doc" />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <Calendar/>

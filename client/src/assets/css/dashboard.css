@@ -14,6 +14,7 @@
     justify-content: center;
     width: 20%;
     cursor: pointer;
+    color: white;
 }
 
 .dashboard-right{
@@ -105,8 +106,12 @@
     margin-top: 32px;
 }
 .welcome-ops div{
-    margin-bottom: 16px;
+    margin-bottom: 6px;
 }
+
+/* .welcome-btn button{
+    height: 20px;
+} */
 
 .calendar{
     display: flex;
@@ -143,3 +148,38 @@
     border-radius: 10px;
 }
 
+.newcases{
+    width: 50%;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.newcases-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F8F8F8;
+    height: 35vh;
+}
+
+.newcases-head{
+    display: flex;
+}
+
+.newcases-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #E1C7AA;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 95%;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.newcases-card p{
+    margin: 0;
+    margin-right: 50px;
+    margin-left: 10px;
+}

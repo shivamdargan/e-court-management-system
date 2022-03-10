@@ -1,5 +1,6 @@
 import React from 'react'
 import new_cases from '../../assets/media/new_cases.png';
+import '../../assets/css/dashboard.css';
 
 const Newcases = () => {
   return (
