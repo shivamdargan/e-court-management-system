@@ -1,4 +1,5 @@
-import '../../assets/css/CasesSection.css';
+import '../../assets/css/casesSection.css';
+import '../../assets/css/dashboard.css';
 import { Files } from './dummy';
 import CaseCards from './CaseCards';
 

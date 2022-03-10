@@ -15,6 +15,10 @@
     width: 20%;
     cursor: pointer;
     color: white;
+    /* position: fixed; */
+}
+.sidenav a{
+    text-decoration: none;
 }
 
 .dashboard-right{

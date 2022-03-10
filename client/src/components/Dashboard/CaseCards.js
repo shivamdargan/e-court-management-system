@@ -1,4 +1,4 @@
-import '../../assets/css/CasesSection.css';
+import '../../assets/css/casesSection.css';
 
 const CaseCards=(props) =>{
     return (
