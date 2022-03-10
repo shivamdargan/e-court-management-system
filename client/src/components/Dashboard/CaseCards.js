@@ -8,7 +8,7 @@ const CaseCards=(props) =>{
             </div>
             <div className='body'>
                 <h2>{props.t}</h2>
-                <p>{props.l}</p>
+                <a href='/case'><p>{props.l}</p></a>
             </div>
         </div>
     );

@@ -53,4 +53,40 @@
     color: #C89A69;
 }
 
+.one{
+    margin-top: 32px;
+    text-align: left;
+    background-color: #f8f8f8;
+    box-shadow: 0px 4px 16px 4px rgba(128, 128, 128, 0.253);
+    border-radius: 16px;
+    padding: 32px 44px;
+    font-family: 'Montserrat', sans-serif;
+}
 
+.two{
+    display: flex;
+    flex-direction: row;
+}
+.l{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.l div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.l h3{
+    font-size: 24px;
+    font-weight: 600;
+    margin-right: 16px;
+}
+.l p{
+    margin-left: 16px !important;
+    font-size: 24px;
+}
+.r{
+    margin-left: 400px;
+}
