@@ -1,5 +1,7 @@
 import React from 'react'
 import Calendar from './Calendar.js';
+import Newcases from './Newcases.js';
+import Cases from './Cases.js';
 
 const Dasboard = () => {
   return (
@@ -19,7 +21,8 @@ const Dasboard = () => {
             <Calendar/>
         </div>
         <div className='cases-section'>
-            
+            <Newcases/>
+            <Cases/>
         </div>
     </div>
   )

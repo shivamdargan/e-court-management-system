@@ -11,6 +11,7 @@ import Signuppage from './pages/SignupPage';
 import SignupLawyerPage from './pages/SignupLawyerPage';
 import SignupJudgePage from './pages/SignupJudgePage';
 import DashboardPage from './pages/DashboardPage';
+import EfillingPage from './pages/EfillingPage';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
             </Route>
             <Route path="/dashboard">
              <DashboardPage/>
+            </Route>
+            <Route path="/efiling">
+             <EfillingPage/>
             </Route>
           </Switch>
         </Router>
