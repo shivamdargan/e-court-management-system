@@ -62,6 +62,7 @@ export const Files=[
         {
             date: '18/04/21',
             title: 'Shrilekha vs Ramlala',
+            l: 'View Case'
         }
     ]
 ];

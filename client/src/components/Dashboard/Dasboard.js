@@ -3,8 +3,7 @@ import Calendar from './Calendar.js';
 import Button from '../Button.js';
 import '../../assets/css/dashboard.css';
 import URL from '../../URL.js';
-import Newcases from "../../components/Dashboard/Newcases"
-import Cases from "../../components/Dashboard/Cases"
+import Newcases from "../../components/Dashboard/Newcases";
 
 const Dasboard = () => {
     const [profileData, setProfileData] = useState();
@@ -54,7 +53,6 @@ useEffect(()=>{
         </div>
         <div className='cases-section'>
             <Newcases/>
-            <Cases/>
         </div>
     </div>
   )

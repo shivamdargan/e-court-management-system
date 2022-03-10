@@ -2,7 +2,7 @@ import '../../assets/css/cases.css';
 import { Files } from './dummy';
 import CaseCards from './CaseCards';
 
-const Cases = () => {
+const CasesSection = () => {
 
   const allot= Files[0];
   const pending= Files[1];
@@ -15,35 +15,39 @@ const Cases = () => {
         <p>Filter</p>
       </div>
       <h3>New Cases</h3>
-      <div className='cases'>
+      <div className='row'>
         {
           allot.map((x)=> {
             return(
-                <CaseCards d={x.date} t={x.title} l={x.l} />
+                <div className='col-sm-4'>
+                  <CaseCards d={x.date} t={x.title} l={x.l} />
+                </div>
                 );
               })
             }
         </div>
 
         <h3>Pending Cases</h3>
-      <div className='cases'>
+      <div className='row'>
         {
           pending.map((x)=> {
             return(
+                <div className='col-sm-4'>
                 <CaseCards d={x.date} t={x.title} l={x.l} />
+              </div>
                 );
               })
             }
         </div>
 
         <h3>Disposed Cases</h3>
-      <div className='cases '>
+      <div className='row '>
         {
           disposed.map((x)=> {
             return(
-              <div className=''>
-                <CaseCards d={x.date} t={x.title} l={x.l} />
-              </div>
+                <div className='col-lg-4'>
+                  <CaseCards d={x.date} t={x.title} l={x.l} />
+                </div>
                 );
               })
             }
@@ -52,4 +56,4 @@ const Cases = () => {
   )
 }
 
-export default Cases
+export default CasesSection
