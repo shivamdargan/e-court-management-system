@@ -11,7 +11,7 @@ const LandingContent = () => {
                 <p>“A State Of The Art e-Court Solution”</p>
             </div>
             <div className='getstarted'>
-                <a className='getstarted-btn'>
+                <a className='getstarted-btn' href = "/login" style={{cursor:"pointer",textDecoration:"none"}}>
                     Get Started
                 </a>
             </div>

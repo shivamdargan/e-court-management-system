@@ -36,8 +36,8 @@ useEffect(()=>{
             <div className='welcome'>
                 <div className='welcome-info'>
                     <h1>Welcome,</h1>
-                    <h3>{profileData.name}</h3>
-                    <p>{profileData.location}</p>
+                    <h3>{(profileData === undefined )? "Loading..." : profileData.name}</h3>
+                    <p>{(profileData === undefined )? "Loading..." : profileData.location}</p>
                 </div>
                 <div className='welcome-ops'>
                     <div>
