@@ -5,6 +5,8 @@ import Newcases from './Newcases.js';
 import Cases from './Cases.js';
 import '../../assets/css/dashboard.css';
 import URL from '../../URL.js';
+import Newcases from "../../components/Dashboard/Newcases"
+import Cases from "../../components/Dashboard/Cases"
 
 const Dasboard = () => {
     const [profileData, setProfileData] = useState();
@@ -38,8 +40,8 @@ useEffect(()=>{
             <div className='welcome'>
                 <div className='welcome-info'>
                     <h1>Welcome,</h1>
-                    <h3>{profileData.name}</h3>
-                    <p>{profileData.location}</p>
+                    <h3>{(profileData === undefined )? "Loading..." : profileData.name}</h3>
+                    <p>{(profileData === undefined )? "Loading..." : profileData.location}</p>
                 </div>
                 <div className='welcome-ops'>
                     <div>

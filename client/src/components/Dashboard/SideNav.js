@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../assets/css/dashboard.css';
 import logo from '../../assets/media/logo.png';
 import dashboard from '../../assets/media/dashboard.png';
@@ -8,8 +8,56 @@ import tracker from '../../assets/media/tracker.png';
 import courts from '../../assets/media/courts.png';
 import profile from '../../assets/media/profile.png';
 import logout from '../../assets/media/logout.png';
+import swal from 'sweetalert';
+import URL from '../../URL';
+import { Redirect } from 'react-router'
 
 const SideNav = () => {
+
+    const [redirect,setRedirect] = useState(null);
+    const logoutHandler = (event) =>
+    {
+        event.preventDefault()
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: "include"
+            };
+            fetch(`${URL}/users/logout`, requestOptions )
+            .then(async response => {
+                setRedirect(<Redirect to="/"/>)
+                response.json().then(data =>  {
+                    
+                    if(response.ok){
+                        setRedirect(<Redirect to="/"/>)
+                        swal({
+                          title: "Success!",
+                          text: "User Successfully Logged Out",
+                          icon: "success",
+                        });
+                       
+
+                     }
+                    else{
+                        setRedirect(<Redirect to="/"/>)
+                      swal({
+                        title: "Failed!",
+                        text: data._message === undefined ? " Unknown Error Occured !": "Error Occurred !",
+                        icon: "error"
+                      });
+                      
+                        //throw response.json();
+                    }
+                  });
+                
+              })
+              .catch(async (error) => {
+                const errorMessage = await error;
+                console.log(errorMessage)
+                
+              })
+    }
+
 
     const btnStyle = {
         color: "#E1C7AA"
@@ -17,6 +65,7 @@ const SideNav = () => {
 
   return (
     <div className='sidenav'>
+        {redirect}
         <div className='logosection'>
             <img src={logo}></img>
         </div>
@@ -45,9 +94,9 @@ const SideNav = () => {
                 <img src={profile} width="20px" height="20px"></img>
                 <a>Profile</a>
             </div>
-            <div className='link logout'>
+            <div onClick={logoutHandler} className='link logout'>
                 <img src={logout} width="20px" height="20px"></img>
-                <a>Logout</a>
+                <a >Logout</a>
             </div>
         </div>
     </div>
