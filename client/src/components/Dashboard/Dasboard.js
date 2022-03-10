@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Calendar from './Calendar.js';
 import Button from '../Button.js';
+import Newcases from './Newcases.js';
+import Cases from './Cases.js';
 import '../../assets/css/dashboard.css';
 import URL from '../../URL.js';
 
