@@ -1,10 +1,13 @@
 import React from 'react'
 import '../assets/css/navbar.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  const x= props.p? 'nav-main':'nav-b';
+
   return (
     <div>
-        <div className='nav-main'>
+        <div className={x}>
             <div className='nav-links'>
                 <a>About</a>
                 <a>Cases</a>

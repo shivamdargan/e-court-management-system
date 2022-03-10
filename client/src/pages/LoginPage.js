@@ -4,9 +4,12 @@ import Login from '../components/Login/Login'
 import Navbar from '../components/Navbar'
 
 const LoginPage = () => {
+
+  const x=0;
+
   return (
     <div>
-        <Navbar/>
+        <Navbar p={x} />
         <Login/>
         <Footer/>
     </div>
