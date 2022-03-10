@@ -8,8 +8,8 @@ const DashboardPage = () => {
   return (
     <div className='dashboard'>
         <SideNav></SideNav>
-        {/* <Dashboard/> */}
-        <Cases/>
+        <Dashboard/>
+        {/* <Cases/> */}
     </div>
   )
 }
