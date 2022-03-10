@@ -6,6 +6,7 @@ import '../../assets/css/dashboard.css';
 import URL from '../../URL.js';
 // import Newcases from "../../components/Dashboard/Newcases";
 // import Cases from "../../components/Dashboard/Cases";
+import { Redirect } from 'react-router'
 
 const Dasboard = () => {
     const [profileData, setProfileData] = useState();
@@ -44,11 +45,8 @@ useEffect(()=>{
                 </div>
                 <div className='welcome-ops'>
                     <div className='welcome-btn'>
-                        <Button content="Schedule" />
+                    {(profileData === undefined )? "Loading..." : profileData.type == "judge" ? <Button content="Schedule" /> : <Button link = "/efiling" content= "File A Case" />} 
                     </div>
-                    {/* <div className='welcome-btn'>
-                        <Button content="Upload Doc" />
-                    </div> */}
                 </div>
             </div>
             <Calendar/>
