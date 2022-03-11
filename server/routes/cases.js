@@ -142,12 +142,14 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
 })
 
 router.get('/dashboard/profile', auth, async (req,res) => {
+  console.log("Hello")
   let userId = req.user._id;
   let profileInfo = await User.findById(userId);
+  console.log(profileInfo);
   let cases = [] 
   let hDate; 
     if(req.user.type === 'judge'){
-      
+      console.log("INnn")
       if(profileInfo.noOfCases > 0)
       {
         const judgeCaseIds = profileInfo.assignedCaseIds;
