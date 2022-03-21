@@ -1,6 +1,6 @@
 import '../../assets/css/casesSection.css';
 import '../../assets/css/dashboard.css';
-import { Files } from './dummy';
+// import { Files } from './dummy';
 import CaseCards from './CaseCards';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -9,71 +9,127 @@ import URL from '../../URL';
 const CasesSection = () => {
 
   const [dashCases,setDashCases] = useState(null);
-  const getDashboardCases = () => {
-    fetch(`${URL}/dashboard/profile`,  {credentials: "include"})
-    .then(async response => {
-        if(response.ok){
-            response.json().then(data => {
-               setDashCases(data)
-            });
-         }
-        else{
-            throw response.json();
-        }
-      })
-      .catch(async (error) => {
-       
-        const errorMessage = await error;
-        console.log(errorMessage)
-      })
+  const [newCases, setNewCases] =useState([]);
+  const [pendingCases, setPendingCases] = useState([]);
+  const [disposedCases,setDisposedCases] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [update, setUpdate] = useState();
+
+  const categorizeCases = () => {
+
+            if(dashCases === null){
+              setLoading(true)
+              // setTimeout(() => {
+              //   categorizeCases();
+              //   console.log("NJsn")
+              // }, 2000);
+            } 
+            else
+            {
+                console.log("Helloasdj")
+                console.log(dashCases)
+                setLoading(false);
+                (dashCases.cases).map((dashCase) => { 
+                    
+                  if(dashCase.hearingDate === "Hearing Date not assigned yet")
+                  {
+                    console.log("In New Case ")
+                    setNewCases(prev => 
+                      [...prev,
+                      dashCase]);
+                  }
+                  else if(dashCase.status === "closed")
+                  {
+                    console.log("In Closed Cases !")
+                    setDisposedCases(prev => 
+                      [...prev,
+                      dashCase]);
+                  }
+                  else
+                  {
+                    console.log("In Already Heard Cases !")
+                    setPendingCases(prev => 
+                      [...prev,
+                      dashCase]);
+                  }
+                    })
+              }
+
+      } 
+
+    const getDashboardCases = () => {
+      fetch(`${URL}/dashboard/profile`,  {credentials: "include"})
+      .then(async response => {
+          if(response.ok){
+              response.json().then(data => {
+                console.log(data);
+                setDashCases(data);
+                setUpdate(1);
+              });
+          }
+          else{
+              throw response.json();
+          }
+        })
+        .catch(async (error) => {
+        
+          const errorMessage = await error;
+          console.log(errorMessage)
+        })
   }
   useEffect(() =>{
-    getDashboardCases();
-   }, [])
+    getDashboardCases();  
+   },[]);
 
-   console.log(dashCases)
+ 
+   useEffect(() =>{
+    categorizeCases();  
+   },[update]);
+   
+  
+
   return (
     <div className='right'>
       <div className='top'>
         <h1>Cases</h1>
         <p>Filter</p>
       </div>
-      <h3>New Cases</h3>
-      <div className='row'>
-        { dashCases === null ? "Loading..." :
-          (dashCases.cases).map((dashCase) => {
-            return <div className='col-sm-4'>
-                  <CaseCards d={dashCase.title} t={dashCase.details} l={dashCase.hearingDate}/>
-                </div>;
-              })
-            }
-        </div>
-
-        {/* <h3>Pending Cases</h3> */}
-      {/* <div className='row'>
-        {
-          pending.map((x)=> {
-            return(
-                <div className='col-sm-4'>
-                <CaseCards d={x.date} t={x.title} l={x.l} />
-              </div>
-                );
-              })
-            }
-        </div> */}
-
-        {/* <h3>Disposed Cases</h3> */}
-      {/* <div className='row '>
-        {
-          disposed.map((x)=> {
-            return(
-                <div className='col-lg-4'>
-                  <CaseCards d={x.date} t={x.title} l={x.l} />
+      { loading ? "Loading..." : <div>
+              <h3>New Cases</h3>
+              <div className='row'>
+                {console.log(newCases)}
+                { newCases == null ? "No New Alloted Cases To Show" :
+                  newCases.map((newCase) => {
+                    return <div className='col-sm-4'>
+                          <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate}/>
+                        </div>;
+                      })
+                    }
                 </div>
-                );
-              })
-            }
-        </div> */}
+
+                <h3>Pending Cases</h3>
+              <div className='row'>
+                { pendingCases === undefined ? "No Pending Cases To Show " :
+                  pendingCases.map((pendingCase) => {
+                    return <div className='col-sm-4'>
+                          <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate}/>
+                        </div>;
+                      })
+                    }
+                </div>
+
+                <h3>Disposed Cases</h3>
+              <div className='row'>
+                { disposedCases === null ? "No Closed Cases To Show !" :
+                  disposedCases.map((disposedCase) => {
+                    return <div className='col-sm-4'>
+                          <CaseCards d={disposedCase.title} t={disposedCase.details} l={disposedCase.hearingDate}/>
+                        </div>;
+                      })
+                    }
+                </div>
+        </div>
+}
     </div>
   )
 }

@@ -197,7 +197,9 @@ router.get('/dashboard/profile', auth, async (req,res) => {
               title:jCase.title,
               details:jCase.details,
               clause:jCase.clause,
-              hearingDate: hDate
+              hearingDate: hDate,
+              cnr:jCase.cnr,
+              status:jCase.status
             });
           });
 
@@ -236,7 +238,9 @@ router.get('/dashboard/profile', auth, async (req,res) => {
             title:judgeCase.title,
             details:judgeCase.details,
             clause:judgeCase.clause,
-            hearingDate: hDate
+            hearingDate: hDate,
+            cnr:caseId,
+            status:judgeCase.status
           })
           
         }
