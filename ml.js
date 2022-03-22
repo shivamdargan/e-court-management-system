@@ -1,5 +1,5 @@
 const { spawn } = require('child_process');
-
+console.log("Python script running");
 module.exports = {
     start: function(dCriminal, date, callback){
         const childPython = spawn('python', ['model.py', `${dCriminal}`, `${date}`]);
