@@ -9,9 +9,9 @@ const Navbar = (props) => {
     <div>
         <div className={x}>
             <div className='nav-links'>
-                <a>About</a>
-                <a>Cases</a>
-                <a>Courts</a>
+                <a href='/'>About</a>
+                <a href='/login' >Cases</a>
+                <a href='/login' >Courts</a>
                 <a href='/login'>Login</a>
                 <a href='/signup' className='signup-btn'>Signup</a>
             </div>
