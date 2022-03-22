@@ -5,6 +5,7 @@ import CaseCards from './CaseCards';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import URL from '../../URL';
+import Loader from './Loader';
 
 const CasesSection = () => {
 
@@ -19,10 +20,6 @@ const CasesSection = () => {
 
             if(dashCases === null){
               setLoading(true)
-              // setTimeout(() => {
-              //   categorizeCases();
-              //   console.log("NJsn")
-              // }, 2000);
             } 
             else
             {
@@ -94,7 +91,9 @@ const CasesSection = () => {
         <h1>Cases</h1>
         <p>Filter</p>
       </div>
-      { loading ? "Loading..." : <div>
+      { loading ? <div>
+          <Loader/>
+      </div>: <div>
               <h3>New Cases</h3>
               <div className='row'>
                 {console.log(newCases)}
@@ -109,7 +108,8 @@ const CasesSection = () => {
 
                 <h3>Pending Cases</h3>
               <div className='row'>
-                { pendingCases === undefined ? "No Pending Cases To Show " :
+                {console.log(pendingCases)}
+                { pendingCases.length === 0? <h5>No Pending Cases To Show...</h5>:
                   pendingCases.map((pendingCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate}/>
