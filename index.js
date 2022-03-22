@@ -9,6 +9,7 @@ const passport = require("passport");
 const userRoutes = require("./routes/user");
 const caseRoutes = require("./routes/cases")
 const session = require("express-session");
+const path = require("path");
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
