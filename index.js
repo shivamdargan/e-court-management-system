@@ -40,6 +40,8 @@ app.listen(process.env.PORT || 5000,()=>{
 
 //passport Setup
 app.use(cookieParser(process.env.SECRET_KEY));
+console.log(process.env.SECRET_KEY);
+console.log(process.env.MONGO_URI);
 app.use(
     session({
       secret: process.env.SECRET_KEY,
