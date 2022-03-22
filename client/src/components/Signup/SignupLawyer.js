@@ -4,7 +4,7 @@ import { useState } from 'react';
 import swal from 'sweetalert';
 import { Redirect } from 'react-router'
 import signupimg from '../../assets/media/signup.png';
-
+import URL from '../../URL';
 const SignupLawyer = () => {
 
     const [redirect,setRedirect] = useState(null);
@@ -35,7 +35,7 @@ const SignupLawyer = () => {
             body:JSON.stringify(userEnteredData),  
             credentials: "include"
             };
-            fetch(`http://localhost:5000/register`, requestOptions )
+            fetch(`${URL}/register`, requestOptions )
             .then(async response => {
                 response.json().then(data =>  {
                     

@@ -34,7 +34,7 @@ const Signup = () => {
             body:JSON.stringify(userEnteredData),  
             credentials: "include"
             };
-            fetch(`http://localhost:5000/register`, requestOptions )
+            fetch(`${URL}/register`, requestOptions )
             .then(async response => {
                 response.json().then(data =>  {
                   
