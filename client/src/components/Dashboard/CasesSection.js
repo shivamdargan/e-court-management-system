@@ -97,7 +97,7 @@ const CasesSection = () => {
               <h3>New Cases</h3>
               <div className='row'>
                 {console.log(newCases)}
-                { newCases == null ? "No New Alloted Cases To Show" :
+                { newCases.length === 0 ? "No New Alloted Cases To Show" :
                   newCases.map((newCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate}/>
@@ -109,7 +109,7 @@ const CasesSection = () => {
                 <h3>Pending Cases</h3>
               <div className='row'>
                 {console.log(pendingCases)}
-                { pendingCases.length === 0? <h5>No Pending Cases To Show...</h5>:
+                { pendingCases.length === 0 ? <h5>No Pending Cases To Show...</h5>:
                   pendingCases.map((pendingCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate}/>
@@ -120,7 +120,7 @@ const CasesSection = () => {
 
                 <h3>Disposed Cases</h3>
               <div className='row'>
-                { disposedCases === null ? "No Closed Cases To Show !" :
+                { disposedCases.length === 0 ? "No Closed Cases To Show !" :
                   disposedCases.map((disposedCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={disposedCase.title} t={disposedCase.details} l={disposedCase.hearingDate}/>

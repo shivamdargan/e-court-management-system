@@ -213,7 +213,7 @@ router.get('/dashboard/profile', auth, async (req,res) => {
           // profileInfo.assign(profileInfo,cases)
           res.status(200).send(profileInfo);
           
-        },11000)
+        },14000)
       }
     }else{
       // let userId = req.user._id;
