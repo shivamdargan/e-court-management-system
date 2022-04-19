@@ -1,16 +1,30 @@
+import { useEffect, useState } from 'react';
 import '../../assets/css/casesSection.css';
+import { Redirect } from 'react-router';
 
 const CaseCards=(props) =>{
+
+    const [URL, setURL] = useState(null)
+    // const [redirectPage, setRedirectPage] = useState(null);
+    // const redirectHandler = () => {
+    //     let url = "/caseDetails/" + props.cnr;
+    //     setRedirectPage(<Redirect to= {url} />)
+    // }
+    useEffect(() => {
+        setURL("/caseDetails/" + props.cnr);
+    },[])
     return (
         <div className='card'>
+            {/* {redirectPage} */}
             <div className='date'>
                 <h4>{props.d}</h4>
             </div>
             <div className='body'>
                 <h2>{props.t}</h2>
-                <a href='/case'><p>{props.l}</p></a>
+                <a href = {URL} ><p>{props.l}</p></a>
             </div>
         </div>
+        
     );
 }
 

@@ -1,11 +1,12 @@
 .right{
     position: relative;
     float: right;
-    width: 80%;
+    width: 100%;
     padding: 64px 40px;
     display: flex;
     flex-direction: column;
     padding-top: 80px;
+    padding-left: 330px!important   ;
 }
 .right h3{
     text-align: left;

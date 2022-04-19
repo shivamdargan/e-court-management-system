@@ -37,6 +37,7 @@ useEffect(()=>{
 },[])
   return (
     <div className='dashboard-right'>
+      
         <div className='calendar-section'>
             <div className='welcome'>
                 <div className='welcome-info'>
@@ -50,12 +51,14 @@ useEffect(()=>{
                     </div>
                 </div>
             </div>
+            
             <Calendar/>
         </div>
         <div className='cases-section'>
             <Newcases/>
         </div>
     </div>
+    
   )
 }
 

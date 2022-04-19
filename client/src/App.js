@@ -19,14 +19,6 @@ import Case from './components/Dashboard/Case';
 function App() {
   return (
     <div className="App">
-      {/* <BrowserRouter>
-      <Routes>
-        <Route eaxct path="/" element={<Landing/>}>
-          <Route  path="/login" element={<Login/>} />
- 
-        </Route>
-      </Routes>
-    </BrowserRouter> */}
    <Router>
           <Switch>
             <Route path="/" exact>
@@ -50,7 +42,7 @@ function App() {
             <Route path="/cases">
               <CasesPage/>
             </Route>
-            <Route path="/case">
+            <Route path="/caseDetails/:cnr">
               <Case/>
             </Route>
           </Switch>

@@ -44,7 +44,7 @@ const dateHandler = () => {
     <div className='calendar'>
         <div className='calendar-info'>
             <h1>Calendar</h1>
-            <p>{dd + " " + monthNames[today.getMonth()] + '-' + (Number(dd)+5) + " " + monthNames[today.getMonth()]} </p>
+            <p> <span>{dd + " " + monthNames[today.getMonth()] } <br/> <b>~</b> <br/> { + (Number(dd)+5) + " " + monthNames[today.getMonth()]} </span></p>
         </div>
         <div className='calendar-box'>
             <div className='calendar-circles'>

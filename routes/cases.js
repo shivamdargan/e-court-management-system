@@ -275,9 +275,10 @@ router.get('/dailyFilled/cases',  async (req,res) => {
 
 });
 
-router.post('/search/cnrNumber',  async (req,res) => {
+router.get('/search/cnrNumber/:cnr',  async (req,res) => {
 
-  const CNRcase = await Case.findOne({cnr:req.body.cnr});
+  const cnrNumber = req.params.cnr
+  const CNRcase = await Case.findOne({cnr:cnrNumber});
   res.status(200).send({Case:CNRcase});
 
 });

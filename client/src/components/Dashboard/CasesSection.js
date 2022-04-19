@@ -1,6 +1,5 @@
 import '../../assets/css/casesSection.css';
 import '../../assets/css/dashboard.css';
-// import { Files } from './dummy';
 import CaseCards from './CaseCards';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -61,8 +60,7 @@ const CasesSection = () => {
               response.json().then(data => {
                 console.log(data);
                 setDashCases(data);
-                setUpdate(1);
-              });
+                setUpdate(1);              });
           }
           else{
               throw response.json();
@@ -100,7 +98,7 @@ const CasesSection = () => {
                 { newCases.length === 0 ? "No New Alloted Cases To Show" :
                   newCases.map((newCase) => {
                     return <div className='col-sm-4'>
-                          <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate}/>
+                          <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate} cnr = {newCase.cnr}/>
                         </div>;
                       })
                     }
@@ -108,11 +106,10 @@ const CasesSection = () => {
 
                 <h3>Pending Cases</h3>
               <div className='row'>
-                {console.log(pendingCases)}
                 { pendingCases.length === 0 ? <h5>No Pending Cases To Show...</h5>:
                   pendingCases.map((pendingCase) => {
                     return <div className='col-sm-4'>
-                          <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate}/>
+                          <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate} cnr = {pendingCase.cnr}/>
                         </div>;
                       })
                     }
@@ -123,7 +120,7 @@ const CasesSection = () => {
                 { disposedCases.length === 0 ? "No Closed Cases To Show !" :
                   disposedCases.map((disposedCase) => {
                     return <div className='col-sm-4'>
-                          <CaseCards d={disposedCase.title} t={disposedCase.details} l={disposedCase.hearingDate}/>
+                          <CaseCards d={disposedCase.title} t={disposedCase.details} l={disposedCase.hearingDate} cnr = {disposedCase.cnr}/>
                         </div>;
                       })
                     }

@@ -1,40 +1,94 @@
 import SideNav from "./SideNav";
 import '../../assets/css/casesSection.css';
-
+import { useParams } from "react-router-dom";
+import URL from "../../URL";
+import Carousel from "../carousel";
+import { useEffect, useState } from "react";
 const Case=() =>{
+
+    const [caseDetail, setCaseDetail] = useState(null);
+    // const[image,setImage]=useState([])
+    const params = useParams();
+    const cnrNumber = params.cnr;
+
+    const caseDetailsHandler = () => {
+         fetch(`${URL}/search/cnrNumber/${cnrNumber}`,  {credentials: "include"})
+        .then(async response => {
+            if(response.ok){
+                response.json().then(data => {
+                   console.log(data)
+                   setCaseDetail(data)
+             
+                });
+             }
+            else{
+                throw response.json();
+            }
+          })
+          .catch(async (error) => {
+           
+            const errorMessage = await error;
+            console.log(errorMessage)
+          })
+    }
+       
+    useEffect (() => {
+        caseDetailsHandler();
+    },[])
+
+
+    // let imagesInitial;
+    // const imageHandler = () => {
+
+    //     console.log(caseDetail)
+    //     let imagesInitial = caseDetail.Case.images
+    //     let imagesFinal = []
+        
+    //     if(caseDetail.Case.images !== undefined){
+            
+    //         for(let i = 0; i < caseDetail.Case.images.length; i++)
+    //         {
+    //         imagesFinal[i] = new Buffer(imagesInitial[i]).toString("base64")
+    //         }
+        
+    //         setImage(imagesFinal)
+    //     }
+    // }
     return (
         <div className="dashboard">
             <SideNav/>
             <div className="right"> 
                 <div className="top">
-                    <h1>Aman vs Manoj Kumar</h1>
+                    <h1>{ caseDetail === null ? "Loading..." : caseDetail.Case.title }</h1>
                 </div>
                 <div className="one">
                     <h3>Description</h3>
-                    <p> Import or export of counterfeit coin.—Whoever imports into 1[India], or exports therefrom, any counterfeit ... coin, knowing or having reason to believe that the same is counterfeit, shall be punished with imprisonment of either description
+                    <p> {caseDetail === null ? "Loading..." : caseDetail.Case.details}
 </p>
                 </div>
                 <div className="one two">
                     <div className="l">
                         <div>
-                            <h3>CNR NO:</h3><h6>HFNE420691232022</h6>
+                            <h3>CNR:</h3><h6>{caseDetail === null ? "Loading..." : cnrNumber}</h6>
                         </div>
                         <div>
-                            <h3>Clause NO:</h3><h6>403</h6>
+                            <h3>Clause No:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.clause}</h6>
                         </div>
                         <div>
-                            <h3>Court Location:</h3><h6>Mumbai High Court</h6>
+                            <h3>Location:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.location}</h6>
                         </div>
                     </div>
                     <div className="l r">
                         <div>
-                            <h3>Date of Filing:</h3><h6>1/04/22</h6>
+                            <h3>Date of Filing:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.date}</h6>
                         </div>
                         <div>
-                            <h3>Last Hearing Date:</h3><h6>Not Heard Yet</h6>
+                            <h3>Last Hearing Date:</h3><h6>{caseDetail === null ? "Loading..." : 
+                            caseDetail.Case.hearingDate === undefined ? "Not Heard Yet" : caseDetail.Case.hearingDate
+                            }</h6>
                         </div>
                         <div>
-                            <h3>Next Hearing Date:</h3><h6>Not Heard Yet</h6>
+                            <h3>Next Hearing Date:</h3><h6>Not Decided Yet</h6>
                         </div>
                     </div>
                 </div>
@@ -43,19 +97,29 @@ const Case=() =>{
                     <div className="two">
                         <div className="l">
                             <div>
-                                <h3>Name:</h3><h6>Manoj Kumar</h6>
+                                <h3>Name:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.nameAccused}</h6>
                             </div>
                             <div>
-                                <h3>Phone NO:</h3><h6>9721387218</h6>
+                                <h3>Phone No:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.phone}</h6>
                             </div>
                         </div>
                         <div className="l r">
                             <div>
-                                <h3>Gender:</h3><h6>M</h6>
+                                <h3>Gender:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.gender}</h6>
                             </div>
                             <div>
-                                <h3>Age:</h3><h6>32</h6>
+                                <h3>Age:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.age}</h6>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="one">
+                    <h3>Supporting Documents</h3>
+                    <div className="two-two">
+                        <div>
+                            {caseDetail === null ? "Loading..." : <Carousel carouselId={cnrNumber} images={caseDetail.Case.images}/>
+                            }
                         </div>
                     </div>
                 </div>

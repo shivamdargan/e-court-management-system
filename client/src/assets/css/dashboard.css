@@ -12,12 +12,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 20%;
+    height: 100%;
+    width: 280px;
     color: white;
-    /* position: fixed;
+    position: fixed;
     z-index: 1;
     top: 0;
-    left: 0; */
+    left: 0;
 }
 .sidenav a{
     text-decoration: none;
@@ -28,6 +29,7 @@
     flex-direction: column;
     right: 0;
     width: 80%;
+    padding-left: 300px;
     padding-top: 80px;
 }
 
@@ -86,12 +88,15 @@
 }
 
 .welcome-info{
-    border-right: 2px solid black;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: start;
     font-family: 'Montserrat', sans-serif;
+}
+.hr1
+{
+    border-right: 2px solid black;
 }
 .welcome-info h1{
     font-size: 64px;
@@ -126,6 +131,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-left: 400px;
     width: 70%;
     /* background-color: #484746; */
 }
@@ -138,6 +144,7 @@
 
 .calendar-info p{
     /* margin: 0; */
+    margin-left: 0px;
     margin-left: 200px;
     margin-bottom: 0;
     color: #7A7A79;
@@ -152,7 +159,7 @@
     display: flex;
     /* height: 90%; */
     height: 100vh;
-    width: 90%;
+    width: 290%;
     background-color: #F8F8F8;
     border-radius: 10px;
 }
@@ -162,6 +169,7 @@
     flex-direction: row;
     width: 100%;
     margin-top: 20px;
+    margin-bottom: 10px;
     /* align-items: center; */
     justify-content: center;
     /* height: 10vh; */
@@ -223,8 +231,8 @@
 }
 
 .newcases{
-    width: 50%;
-    margin-top: 25px;
+    width: 68%;
+    margin-top: 15px;
     margin-left: 10px;
 }
 
@@ -233,9 +241,8 @@
     flex-direction: column;
     align-items: center;
     background-color: #F8F8F8;
-    height: 35vh;
+    height: 25vh;
 }
-
 .newcases-head{
     display: flex;
 }
