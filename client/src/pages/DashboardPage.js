@@ -6,7 +6,7 @@ import Dashboard from '../components/Dashboard/Dasboard';
 const DashboardPage = () => {
   return (
     <div className='dashboard'>
-        <SideNav></SideNav>
+        <SideNav section = "dashboard" ></SideNav>
         <Dashboard/>
     </div>
   )

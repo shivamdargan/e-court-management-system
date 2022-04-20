@@ -12,9 +12,32 @@ import swal from 'sweetalert';
 import URL from '../../URL';
 import { Redirect } from 'react-router';
 
-const SideNav = () => {
+const SideNav = (props) => {
 
     const [redirect,setRedirect] = useState(null);
+    let dashboardActiveClass;
+    let casesActiveClass;
+    let calendarActiveClass;
+    let TrackerActiveClass;
+    let CourtsActiveClass;
+    let ProfileActiveClass;
+
+   if(props.section)
+   {
+     dashboardActiveClass = props.section.localeCompare("dashboard") === 0 ? "activeSection":"";
+     casesActiveClass = props.section.localeCompare("case") === 0 ? "activeSection":"";
+     calendarActiveClass = props.section.localeCompare("calendar") === 0 ? "activeSection":"";
+     TrackerActiveClass = props.section.localeCompare("tracker") === 0 ? "activeSection":"";
+     CourtsActiveClass = props.section.localeCompare("courts") === 0 ? "activeSection":"";
+     ProfileActiveClass = props.section.localeCompare("profile") === 0 ? "activeSection":"";
+   }
+    
+
+    if(props.section === undefined)
+    {
+        casesActiveClass = "activeSection";
+    }
+    
     const logoutHandler = (event) =>
     {
         event.preventDefault()
@@ -73,34 +96,45 @@ const SideNav = () => {
             <div className='link'>
                 <a href='/dashboard'>
                     <img src={dashboard} width="20px" height="20px"></img>
-                    <a style={btnStyle}>Dashboard</a>
+                    <a className = {dashboardActiveClass} >Dashboard</a>
                 </a>
             </div>
             <div className='link'>
                 <a href='/cases'>
                     <img src={cases} width="20px" height="20px"></img>
-                    <a>Cases</a>
+                    <a className= {casesActiveClass} >Cases</a>
                 </a>
             </div>
             <div className='link'>
+            <a href='/calendar'>
                 <img src={calendar} width="20px" height="20px"></img>
-                <a>Calendar</a>
+                <a className= {calendarActiveClass}>Calendar</a>
+            </a>
             </div>
             <div className='link'>
+            <a href = "/tracker" >
                 <img src={tracker} width="20px" height="20px"></img>
-                <a>Tracker</a>
+                <a className={TrackerActiveClass}>Tracker</a>
+            </a>
             </div>
+            
             <div className='link'>
+            <a href= "/courts">
                 <img src={courts} width="20px" height="20px"></img>
-                <a>Courts</a>
+                <a className= {CourtsActiveClass} >Courts</a>
+            </a>
             </div>
             <div className='link'>
+            <a href="/profile">
                 <img src={profile} width="20px" height="20px"></img>
-                <a>Profile</a>
+                <a className= {ProfileActiveClass} >Profile</a>
+            </a>
             </div>
             <div onClick={logoutHandler} className='link logout'>
+            <a>
                 <img src={logout} width="20px" height="20px"></img>
                 <a >Logout</a>
+            </a>
             </div>
         </div>
     </div>

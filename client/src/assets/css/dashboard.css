@@ -264,3 +264,6 @@
     margin-right: 50px;
     margin-left: 10px;
 }
+.activeSection {
+    color: #e1c7aa !important;
+}

@@ -5,7 +5,7 @@ import '../assets/css/dashboard.css';
 const CasePage=() =>{
     return (
         <div className="dashboard">
-            <SideNav/>
+            <SideNav section = "case"/>
             <CasesSection/>
         </div>
     );
