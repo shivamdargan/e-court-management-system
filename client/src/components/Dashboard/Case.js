@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 const Case=() =>{
 
     const [caseDetail, setCaseDetail] = useState(null);
-    // const[image,setImage]=useState([])
     const params = useParams();
     const cnrNumber = params.cnr;
 

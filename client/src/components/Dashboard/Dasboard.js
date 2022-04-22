@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Calendar from './Calendar.js';
 import Button from '../Button.js';
 import Newcases from './Newcases.js';
 import '../../assets/css/dashboard.css';
 import { useSelector} from "react-redux";
-import URL from '../../URL.js';
-// import Newcases from "../../components/Dashboard/Newcases";
-// import Cases from "../../components/Dashboard/Cases";
-// import { Redirect } from 'react-router'
 
 
 const Dasboard = () => {

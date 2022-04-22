@@ -5,11 +5,6 @@ import { Redirect } from 'react-router';
 const CaseCards=(props) =>{
 
     const [URL, setURL] = useState(null)
-    // const [redirectPage, setRedirectPage] = useState(null);
-    // const redirectHandler = () => {
-    //     let url = "/caseDetails/" + props.cnr;
-    //     setRedirectPage(<Redirect to= {url} />)
-    // }
     useEffect(() => {
         setURL("/caseDetails/" + props.cnr);
     },[])

@@ -9,10 +9,6 @@ const Newcases = () => {
           <h1>New Cases</h1>
       </div>
         <div  className='newcases-box'>
-            {/* <div className='newcases-index'>
-              <p>Title</p>
-              <p className='index-date'>Date of Filling</p>
-            </div> */}
             <div className='newcases-card'>
               <p>THE STATE OF PUNJAB VS GOVIND SINGH</p>
               <p className='dates'>4 FEB, 2022</p>
