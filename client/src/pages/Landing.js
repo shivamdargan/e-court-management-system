@@ -5,10 +5,15 @@ import LandingContent from '../components/Landing/LandingContent';
 import Stats from '../components/Stats/Stats';
 import About from '../components/About/About';
 import Footer from '../components/Footer';
+import { useDispatch } from 'react-redux';
+import { logout } from '../Reducers/profile';
 
 const Landing = () => {
 
   const x=1;
+  const dispatch = useDispatch();
+
+  dispatch(logout());
 
   return (
     <div className='landing-img'>

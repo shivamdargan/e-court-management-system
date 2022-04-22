@@ -1,40 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Calendar from './Calendar.js';
 import Button from '../Button.js';
 import Newcases from './Newcases.js';
 import '../../assets/css/dashboard.css';
+import { useSelector} from "react-redux";
 import URL from '../../URL.js';
 // import Newcases from "../../components/Dashboard/Newcases";
 // import Cases from "../../components/Dashboard/Cases";
-import { Redirect } from 'react-router'
+// import { Redirect } from 'react-router'
 
 
 const Dasboard = () => {
-    const [profileData, setProfileData] = useState();
-    const getProfile = () => {
-        fetch(`${URL}/users/me`,  {credentials: "include"})
-        .then(async response => {
-            if(response.ok){
-                response.json().then(data => {
-                 
-                   setProfileData(data)
-                });
-             }
-            else{
-                throw response.json();
-            }
-          })
-          .catch(async (error) => {
-           
-            const errorMessage = await error;
-            console.log(errorMessage)
-          })
-    }
-console.log(profileData);
-
-useEffect(()=>{
-    getProfile();
-},[])
+   
+    const profileData = useSelector((state) => state.user.value);
+    
   return (
     <div className='dashboard-right'>
       
@@ -47,7 +26,7 @@ useEffect(()=>{
                 </div>
                 <div className='welcome-ops'>
                     <div className='welcome-btn'>
-                    {(profileData === undefined )? "Loading..." : profileData.type == "judge" ? <Button content="Schedule" /> : <Button link = "/efiling" content= "File A Case" />} 
+                    {(profileData === undefined )? "Loading..." : profileData.type === "judge" ? <Button content="Schedule" /> : <Button link = "/efiling" content= "File A Case" />} 
                     </div>
                 </div>
             </div>

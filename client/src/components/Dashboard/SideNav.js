@@ -40,6 +40,7 @@ const SideNav = (props) => {
     
     const logoutHandler = (event) =>
     {
+       
         event.preventDefault()
         const requestOptions = {
             method: 'POST',
@@ -48,10 +49,13 @@ const SideNav = (props) => {
             };
             fetch(`${URL}/users/logout`, requestOptions )
             .then(async response => {
+                
                 setRedirect(<Redirect to="/"/>)
+               
                 response.json().then(data =>  {
                     
                     if(response.ok){
+                        
                         setRedirect(<Redirect to="/"/>)
                         swal({
                           title: "Success!",

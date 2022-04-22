@@ -4,8 +4,12 @@ import loginimg from '../../assets/media/login.png';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import { Redirect } from 'react-router'
+import { useDispatch} from "react-redux";
+import { login } from '../../Reducers/profile.js';
 import URL from '../../URL';
 const Login = () => {
+
+  const dispatch = useDispatch();
 
     const[redirect,setRedirect] = useState(null)
     const [userEnteredData, setuserEnteredData] = useState({
@@ -44,7 +48,8 @@ const Login = () => {
                       return;
                 }
                   response.json().then(data =>  {
-                    
+                    // console.log(data.user)
+                    dispatch(login(data.user));
                       if(response.ok){
                         
                           swal({
