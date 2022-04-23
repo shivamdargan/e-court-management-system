@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.profile-pic-div{
+    /* border: 2px solid black; */
+}
+
+.profile-pic-div img{
+    border-radius: 100px;
+    border: 2px solid #C89A69;
+}
+
+.userinfo-div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+}

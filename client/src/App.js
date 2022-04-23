@@ -15,6 +15,8 @@ import EfillingPage from './pages/EfillingPage';
 import CasesSection from './components/Dashboard/CasesSection';
 import CasesPage from './pages/CasesPage.js';
 import Case from './components/Dashboard/Case';
+import ProfilePage from './pages/ProfilePage';
+
 
 function App() {
   return (
@@ -44,6 +46,9 @@ function App() {
             </Route>
             <Route path="/caseDetails/:cnr">
               <Case/>
+            </Route>
+            <Route path="/profile">
+              <ProfilePage/>
             </Route>
           </Switch>
         </Router>
