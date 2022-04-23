@@ -4,8 +4,21 @@ import URL from '../URL';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import { Redirect } from 'react-router'
-
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 const Efilling = () => {
+
+    const profileData = useSelector((state) => state.user.value) 
+
+    const redirectHandler = () => {
+      if(Object.keys(profileData).length === 0 )
+      {
+          setRedirect(<Redirect to = "/"></Redirect> );
+      }
+  }
+  useEffect(() => {
+      redirectHandler();
+  },[])
 
     const [redirect,setRedirect] = useState(null);
     const [userEnteredData, setuserEnteredData] = useState({
