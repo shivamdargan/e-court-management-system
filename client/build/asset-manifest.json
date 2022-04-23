@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.99f678ee.css",
-    "main.js": "/static/js/main.c9eaf3d5.js",
+    "main.css": "/static/css/main.862e04aa.css",
+    "main.js": "/static/js/main.153fd46f.js",
     "static/media/landing_pix.png": "/static/media/landing_pix.cc783fad8360d2c06bc3.png",
     "static/media/signup.png": "/static/media/signup.b271cf4f8e511c3c9f59.png",
     "static/media/login.png": "/static/media/login.210eaabc724a54f007b3.png",
     "static/media/no_image_to_show_.jpg": "/static/media/no_image_to_show_.dafb8c90922881197d1f.jpg",
     "static/media/rafikicalendar.png": "/static/media/rafikicalendar.f43bd089dd5487317c22.png",
+    "static/media/blank_profile.png": "/static/media/blank_profile.a9136072d073801df253.png",
     "static/media/rafikiprioritise.png": "/static/media/rafikiprioritise.444d5135f6e051da88bb.png",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.99f678ee.css.map": "/static/css/main.99f678ee.css.map",
-    "main.c9eaf3d5.js.map": "/static/js/main.c9eaf3d5.js.map"
+    "main.862e04aa.css.map": "/static/css/main.862e04aa.css.map",
+    "main.153fd46f.js.map": "/static/js/main.153fd46f.js.map"
   },
   "entrypoints": [
-    "static/css/main.99f678ee.css",
-    "static/js/main.c9eaf3d5.js"
+    "static/css/main.862e04aa.css",
+    "static/js/main.153fd46f.js"
   ]
 }

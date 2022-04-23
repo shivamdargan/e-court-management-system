@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import '../../assets/css/casesSection.css';
-import { Redirect } from 'react-router';
-
 const CaseCards=(props) =>{
 
     const [URL, setURL] = useState(null)
