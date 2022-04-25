@@ -9,7 +9,7 @@ import Loader from './Loader';
 import ScheduleModal from '../../components/Schedule/ScheduleModal';
 import Button from 'react-bootstrap/Button'
 
-const CasesSection = () => {
+const CasesSection = (props) => {
 
   const [dashCases,setDashCases] = useState(null);
   const [newCases, setNewCases] =useState([]);
@@ -102,9 +102,11 @@ const CasesSection = () => {
                   newCases.map((newCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate} cnr = {newCase.cnr}/>
-                          <Button variant="primary" onClick={() => setModalShow(true)}>
+                          <div onClick={() => props.onHide()}>
+                          <Button variant="primary" >
                               Launch vertically centered modal
                           </Button>
+                          </div>
                         </div>;
                       })
                     }

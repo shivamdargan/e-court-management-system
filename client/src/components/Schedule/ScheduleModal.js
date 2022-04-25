@@ -15,8 +15,7 @@ const ScheduleModal = (props) => {
     //     </div>
     // </div>
     <div>
-        <Modal
-      {...props}
+      <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -38,7 +37,7 @@ const ScheduleModal = (props) => {
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
-    </div>
+    </div> 
   )
 }
 
