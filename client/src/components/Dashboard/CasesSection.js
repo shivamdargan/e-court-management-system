@@ -1,3 +1,4 @@
+import React from 'react';
 import '../../assets/css/casesSection.css';
 import '../../assets/css/dashboard.css';
 import CaseCards from './CaseCards';
@@ -5,6 +6,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import URL from '../../URL';
 import Loader from './Loader';
+import ScheduleModal from '../../components/Schedule/ScheduleModal';
+import Button from 'react-bootstrap/Button'
 
 const CasesSection = () => {
 
@@ -81,7 +84,7 @@ const CasesSection = () => {
     categorizeCases();  
    },[update]);
    
-  
+   const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <div className='right'>
@@ -99,6 +102,9 @@ const CasesSection = () => {
                   newCases.map((newCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate} cnr = {newCase.cnr}/>
+                          <Button variant="primary" onClick={() => setModalShow(true)}>
+                              Launch vertically centered modal
+                          </Button>
                         </div>;
                       })
                     }
@@ -120,11 +126,14 @@ const CasesSection = () => {
                 { disposedCases.length === 0 ? "No Closed Cases To Show !" :
                   disposedCases.map((disposedCase) => {
                     return <div className='col-sm-4'>
-                          <CaseCards d={disposedCase.title} t={disposedCase.details} l={disposedCase.hearingDate} cnr = {disposedCase.cnr}/>
+                          <CaseCards d={disposedCase.title} t={disposedCase.details} l={disposedCase.hearingDate} cnr = {disposedCase.cnr} status='true'/>
                         </div>;
                       })
                     }
                 </div>
+                {/* <div> */}
+                {/* <ScheduleModal show={modalShow} onHide={() => setModalShow(false)}/> */}
+                {/* </div> */}
         </div>
 }
     </div>

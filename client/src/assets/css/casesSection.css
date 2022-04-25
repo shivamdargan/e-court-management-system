@@ -93,3 +93,13 @@
 .r{
     margin-left: 400px;
 }
+
+.schedule-btn button{
+    background-color: #cc9c6c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 100px;
+    margin-bottom: 20px;
+}
