@@ -11,8 +11,22 @@ import logout from '../../assets/media/logout.png';
 import swal from 'sweetalert';
 import URL from '../../URL';
 import { Redirect } from 'react-router';
+import { useSelector} from "react-redux";
+import { useEffect } from 'react';
 
 const SideNav = (props) => {
+
+    const profileData = useSelector((state) => state.user.value);
+    const redirectHandler = () => {
+        if(Object.keys(profileData).length === 0 )
+        {
+            setRedirect(<Redirect to = "/"></Redirect> );
+        }
+    }
+    
+    useEffect(() => {
+        redirectHandler();
+    },[])
 
     const [redirect,setRedirect] = useState(null);
     let dashboardActiveClass;

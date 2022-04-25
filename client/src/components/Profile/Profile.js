@@ -2,8 +2,11 @@ import React from 'react'
 import '../../assets/css/casesSection.css';
 import '../../assets/css/profile.css';
 import blankProfile from '../../assets/media/blank_profile.png';
-
+import { useSelector } from 'react-redux';
 const Profile = () => {
+
+    const profileData = useSelector((state) => state.user.value);
+
   return (
     <div className='right'>
         <div className='top'>
@@ -16,23 +19,19 @@ const Profile = () => {
             <div className='userinfo'>
                 <div className='info'>
                     <p>Full Name: </p>
-                    <p><b>Barinder Singh Ramana</b></p>
+                    <p><b>&ensp;  {profileData.name}</b></p>
                 </div>
                 <div className='info'>
                     <p>Designation: </p>
-                    <p><b>Haryana High court Judge</b></p>
+                    <p><b>&ensp;{profileData.location} {profileData.type}</b></p>
                 </div>
                 <div className='info'>
                     <p>UID/Enrollment number: </p>
-                    <p><b>--------------------------</b></p>
+                    <p><b>&ensp;{profileData.uid}</b></p>
                 </div>
                 <div className='info'>
-                    <p>No. of cases solved: </p>
-                    <p><b>10</b></p>
-                </div>
-                <div className='info'>
-                    <p>No. of on-going cases: </p>
-                    <p><b>2</b></p>
+                    <p>No. Of Cases Assigned: </p>
+                    <p><b>&ensp;{profileData.noOfCases}</b></p>
                 </div>
 
             </div>
