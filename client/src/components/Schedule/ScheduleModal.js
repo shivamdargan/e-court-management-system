@@ -4,6 +4,28 @@ import Modal from 'react-modal';
 import Button from 'react-bootstrap/Button'
 
 const ScheduleModal = (props) => {
+
+  const submitStyle = {
+    backgroundColor: "#cc9c6c",
+    border: "none",
+    borderRadius: "25px",
+    width: "250px",
+    height: "35px",
+    marginTop: "20px",
+    color: "white"
+  }
+
+  const closeStyle = {
+    backgroundColor: "white",
+    border: "1px solid #cc9c6c",
+    color: "#cc9c6c",
+    cursor: "pointer",
+    width: "250px",
+    marginTop: "15px",
+    borderRadius: "25px",
+    height: "35px"
+  }
+
   return (
     <>
     {props.show ?  <div className='modal'>
@@ -11,8 +33,8 @@ const ScheduleModal = (props) => {
         <form className='form'>
             <label className='modal-head' for="birthdaytime">Choose Date & Time:</label>
             <input type="datetime-local" id="birthdaytime" name="birthdaytime"/>
-            <input type="submit"/>
-            <a onClick={props.onHide}> hello</a>
+            <input style={submitStyle} type="submit"/>
+            <a onClick={props.onHide} style={closeStyle}>Close</a>
         </form>
         </div>
     </div> : null}

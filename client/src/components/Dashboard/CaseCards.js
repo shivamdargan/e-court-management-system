@@ -13,8 +13,6 @@ const CaseCards=(props) =>{
         setURL("/caseDetails/" + props.cnr);
     },[])
 
-    // const [modalShow, setModalShow] = React.useState(false);
-
     return (
         <div className='card'>
             {/* {redirectPage} */}

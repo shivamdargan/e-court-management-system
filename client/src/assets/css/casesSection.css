@@ -103,3 +103,9 @@
     width: 100px;
     margin-bottom: 20px;
 }
+
+.schedule-btn{
+    background-color: #cc9c6c;
+    width: 200px;
+    border: none;
+}

@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import URL from '../../URL';
 import Loader from './Loader';
 import ScheduleModal from '../../components/Schedule/ScheduleModal';
+import '../../assets/css/schedule.css';
 import Button from 'react-bootstrap/Button'
 
 const CasesSection = (props) => {
@@ -86,6 +87,16 @@ const CasesSection = (props) => {
    
    const [modalShow, setModalShow] = React.useState(false);
 
+   const schedulebtnStyle = {
+     backgroundColor: "#cc9c6c",
+     color: "white",
+     border: "none",
+     height: "40px",
+     width: "200px",
+     borderRadius: "10px",
+     fontSize: "18px"
+   }
+
   return (
     <div className='right'>
       <div className='top'>
@@ -102,10 +113,10 @@ const CasesSection = (props) => {
                   newCases.map((newCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate} cnr = {newCase.cnr}/>
-                          <div onClick={() => props.onHide()}>
-                          <Button variant="primary" >
-                              Launch vertically centered modal
-                          </Button>
+                          <div classname="schedule-btn" onClick={() => props.onHide()}>
+                          <button style={schedulebtnStyle}>
+                              Schedule
+                          </button>
                           </div>
                         </div>;
                       })
@@ -118,6 +129,11 @@ const CasesSection = (props) => {
                   pendingCases.map((pendingCase) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate} cnr = {pendingCase.cnr}/>
+                          <div onClick={() => props.onHide()}>
+                          <Button variant="primary" >
+                              Launch vertically centered modal
+                          </Button>
+                          </div>
                         </div>;
                       })
                     }

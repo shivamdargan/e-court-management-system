@@ -28,3 +28,12 @@
 .modal-head{
     margin-bottom: 25px;
 }
+
+.submit-btn{
+    background-color: #cc9c6c;
+}
+
+.close-btn{
+    background-color: red;
+    color: red;
+}
