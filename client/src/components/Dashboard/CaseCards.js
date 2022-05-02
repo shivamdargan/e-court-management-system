@@ -1,10 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import '../../assets/css/casesSection.css';
-import { Redirect } from 'react-router';
-import ScheduleModal from '../Schedule/ScheduleModal';
-import Modal from 'react-modal';
-import Button from 'react-bootstrap/Button'
+import Moment from 'react-moment';
 
 const CaseCards=(props) =>{
 
@@ -21,7 +18,7 @@ const CaseCards=(props) =>{
             </div>
             <div className='body'>
                 <h2>{props.t}</h2>
-                <a href = {URL} ><p>{props.l}</p></a>
+                <a href = {URL} ><p> {props.l === "Hearing Date not assigned yet" ? props.l :  <Moment format="YYYY/MM/DD HH:mm">{props.l}</Moment>}</p></a>
             </div>
             {/* <div className='schedule-btn'>
                 <button disabled={props.status}>Schedule</button>

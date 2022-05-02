@@ -5,6 +5,7 @@ import App from './App';
 import {configureStore} from "@reduxjs/toolkit"
 import {Provider} from "react-redux"
 import profileReducer from "./Reducers/profile";
+import caseReducer from "./Reducers/case";
 import {
   persistStore,
   persistReducer,
@@ -24,12 +25,13 @@ const persistConfig = {
   storage:storageSession,
 }
 const persistedProfileReducer = persistReducer(persistConfig, profileReducer)
-
+const persistedCaseReducer = persistReducer(persistConfig, caseReducer);
 
 
 const store = configureStore({
   reducer:{
-  user:persistedProfileReducer
+  user:persistedProfileReducer, 
+  case: persistedCaseReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

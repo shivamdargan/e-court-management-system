@@ -6,12 +6,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import URL from '../../URL';
 import Loader from './Loader';
-import ScheduleModal from '../../components/Schedule/ScheduleModal';
 import '../../assets/css/schedule.css';
-import Button from 'react-bootstrap/Button'
+import { useDispatch } from 'react-redux';
+import { setCaseNumber } from '../../Reducers/case';
 
 const CasesSection = (props) => {
 
+  const dispatch = useDispatch();
   const [dashCases,setDashCases] = useState(null);
   const [newCases, setNewCases] =useState([]);
   const [pendingCases, setPendingCases] = useState([]);
@@ -85,7 +86,6 @@ const CasesSection = (props) => {
     categorizeCases();  
    },[update]);
    
-   const [modalShow, setModalShow] = React.useState(false);
 
    const schedulebtnStyle = {
      backgroundColor: "#cc9c6c",
@@ -95,6 +95,10 @@ const CasesSection = (props) => {
      width: "200px",
      borderRadius: "10px",
      fontSize: "18px"
+   }
+
+   const modalHandler = (cnrNumber) => {
+    dispatch(setCaseNumber(cnrNumber))
    }
 
   return (
@@ -114,7 +118,7 @@ const CasesSection = (props) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate} cnr = {newCase.cnr}/>
                           <div classname="schedule-btn" onClick={() => props.onHide()}>
-                          <button style={schedulebtnStyle}>
+                          <button onClick = {() => modalHandler(newCase.cnr)} style={schedulebtnStyle}>
                               Schedule
                           </button>
                           </div>
@@ -130,9 +134,9 @@ const CasesSection = (props) => {
                     return <div className='col-sm-4'>
                           <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate} cnr = {pendingCase.cnr}/>
                           <div onClick={() => props.onHide()}>
-                          <Button variant="primary" >
-                              Launch vertically centered modal
-                          </Button>
+                          <button onClick = {() => modalHandler(pendingCase.cnr)} style={schedulebtnStyle}>
+                              Schedule
+                          </button>
                           </div>
                         </div>;
                       })
@@ -149,9 +153,6 @@ const CasesSection = (props) => {
                       })
                     }
                 </div>
-                {/* <div> */}
-                {/* <ScheduleModal show={modalShow} onHide={() => setModalShow(false)}/> */}
-                {/* </div> */}
         </div>
 }
     </div>

@@ -1,9 +1,14 @@
 import React from 'react'
 import '../../assets/css/schedule.css';
-import Modal from 'react-modal';
-import Button from 'react-bootstrap/Button'
-
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { removeCaseNumber } from '../../Reducers/case';
+import { useState } from 'react';
 const ScheduleModal = (props) => {
+
+  const dispatch = useDispatch();
+  const caseNumber = useSelector((state) => state.case.value);
+  console.log(caseNumber);
 
   const submitStyle = {
     backgroundColor: "#cc9c6c",
@@ -26,46 +31,34 @@ const ScheduleModal = (props) => {
     height: "35px"
   }
 
+  const closeModalHandler = () => {
+    props.onHide();
+    dispatch(removeCaseNumber());
+  }
+
+  const [hearingDate, setHearingDate] = useState();
+  const setHearingDateHandler = (e) => {
+    setHearingDate(e.target.value);
+  }
+  
+  const submitHandler = () => {
+    
+  }
   return (
     <>
     {props.show ?  <div className='modal'>
         <div className='modal-form'>
         <form className='form'>
-            <label className='modal-head' for="birthdaytime">Choose Date & Time:</label>
-            <input type="datetime-local" id="birthdaytime" name="birthdaytime"/>
-            <input style={submitStyle} type="submit"/>
-            <a onClick={props.onHide} style={closeStyle}>Close</a>
+            <label className='modal-head' htmlFor="birthdaytime">Choose Date & Time:</label>
+            <input onChange = {(e) => setHearingDateHandler(e)} type="datetime-local" id="caseSchedule" name="Schedule_Case_Hearing"/>
+            <input onClick={submitHandler} style={submitStyle} type="submit"/>
+            <a onClick={closeModalHandler} style={closeStyle}>Close</a>
         </form>
         </div>
     </div> : null}
     
     
     </>
-    // <div>
-    //   <Modal
-    //   {...props}
-    //   size="lg"
-    //   aria-labelledby="contained-modal-title-vcenter"
-    //   centered
-    // >
-    //   <Modal.Header closeButton>
-    //     <Modal.Title id="contained-modal-title-vcenter">
-    //       Modal heading
-    //     </Modal.Title>
-    //   </Modal.Header>
-    //   <Modal.Body>
-    //     <h4>Centered Modal</h4>
-    //     <p>
-    //       Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-    //       dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-    //       consectetur ac, vestibulum at eros.
-    //     </p>
-    //   </Modal.Body>
-    //   <Modal.Footer>
-    //     <Button onClick={props.onHide}>Close</Button>
-    //   </Modal.Footer>
-    // </Modal>
-    // </div> 
   )
 }
 
