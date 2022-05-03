@@ -291,9 +291,6 @@ router.post('/add/hearingDate', auth , async (req,res) => {
 
 });
 
-// router.post('/prioritize', auth, async (req, res) => {
-
-// })
 
 
 

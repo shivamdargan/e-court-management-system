@@ -10,7 +10,10 @@ import '../../assets/css/schedule.css';
 import { useDispatch } from 'react-redux';
 import { setCaseNumber } from '../../Reducers/case';
 
+
 const CasesSection = (props) => {
+
+ 
 
   const dispatch = useDispatch();
   const [dashCases,setDashCases] = useState(null);
@@ -119,7 +122,7 @@ const CasesSection = (props) => {
                           <CaseCards d={newCase.title} t={newCase.details} l={newCase.hearingDate} cnr = {newCase.cnr}/>
                           <div classname="schedule-btn" onClick={() => props.onHide()}>
                           <button onClick = {() => modalHandler(newCase.cnr)} style={schedulebtnStyle}>
-                              Schedule
+                              Schedule Hearing
                           </button>
                           </div>
                         </div>;
@@ -135,7 +138,7 @@ const CasesSection = (props) => {
                           <CaseCards d={pendingCase.title} t={pendingCase.details} l={pendingCase.hearingDate} cnr = {pendingCase.cnr}/>
                           <div onClick={() => props.onHide()}>
                           <button onClick = {() => modalHandler(pendingCase.cnr)} style={schedulebtnStyle}>
-                              Schedule
+                              Schedule Hearing
                           </button>
                           </div>
                         </div>;
