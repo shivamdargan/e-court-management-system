@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import URL from "../../URL";
 import Carousel from "../carousel";
 import { useEffect, useState } from "react";
+import Moment from 'react-moment';
 const Case=() =>{
 
     const [caseDetail, setCaseDetail] = useState(null);
@@ -35,24 +36,6 @@ const Case=() =>{
         caseDetailsHandler();
     },[])
 
-
-    // let imagesInitial;
-    // const imageHandler = () => {
-
-    //     console.log(caseDetail)
-    //     let imagesInitial = caseDetail.Case.images
-    //     let imagesFinal = []
-        
-    //     if(caseDetail.Case.images !== undefined){
-            
-    //         for(let i = 0; i < caseDetail.Case.images.length; i++)
-    //         {
-    //         imagesFinal[i] = new Buffer(imagesInitial[i]).toString("base64")
-    //         }
-        
-    //         setImage(imagesFinal)
-    //     }
-    // }
     return (
         <div className="dashboard">
             <SideNav/>
@@ -79,11 +62,11 @@ const Case=() =>{
                     </div>
                     <div className="l r">
                         <div>
-                            <h3>Date of Filing:</h3><h6>{caseDetail === null ? "Loading..." : caseDetail.Case.date}</h6>
+                            <h3>Date of Filing:</h3><h6>{caseDetail === null ? "Loading..." : <Moment format="YYYY/MM/DD HH:mm">{caseDetail.Case.date}</Moment> }</h6>
                         </div>
                         <div>
                             <h3>Last Hearing Date:</h3><h6>{caseDetail === null ? "Loading..." : 
-                            caseDetail.Case.hearingDate === undefined ? "Not Heard Yet" : caseDetail.Case.hearingDate
+                            caseDetail.Case.hearingDate === undefined ? "Not Heard Yet" : <Moment format="YYYY/MM/DD HH:mm">{caseDetail.Case.hearingDate}</Moment> 
                             }</h6>
                         </div>
                         <div>

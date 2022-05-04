@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
         <div className='footer-2'>
             <div className='copyright'>
-                <p>© 2022, Gormint All Rights Reserved.</p>
+                <p>© 2022, e-Adalat All Rights Reserved.</p>
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@ const Dasboard = () => {
                 </div>
                 <div className='welcome-ops'>
                     <div className='welcome-btn'>
-                    {(profileData === undefined )? "Loading..." : profileData.type === "judge" ? <Button content="Schedule" /> : <Button link = "/efiling" content= "File A Case" />} 
+                    {(profileData === undefined )? "Loading..." : profileData.type === "judge" ? <Button link = "/cases" content="Schedule" /> : <Button link = "/efiling" content= "File A Case" />} 
                     </div>
                 </div>
             </div>

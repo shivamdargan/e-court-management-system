@@ -4,7 +4,7 @@ const Button =(props) =>{
     return (
         <div className='button'>
             <a href={props.link}>
-                <button>{props.content}</button>
+                <button style={{"color":"black"}}>{props.content}</button>
             </a>
         </div>
     );
