@@ -291,6 +291,21 @@ router.post('/add/hearingDate', auth , async (req,res) => {
 
 });
 
+router.get('/checkValid/:cnr' , async (req,res) => {
+  const cnrCase = await Case.findOne({cnr:req.params.cnr});
+  let valid;
+  if(cnrCase === null)
+  {
+    valid = false;
+  }
+  else
+  {
+    valid = true;
+  }
+  res.status(200).send({validCnr:valid});
+
+});
+
 
 
 

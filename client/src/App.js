@@ -13,7 +13,7 @@ import EfillingPage from './pages/EfillingPage';
 import CasesPage from './pages/CasesPage.js';
 import Case from './components/Dashboard/Case';
 import ProfilePage from './pages/ProfilePage';
-
+import CaseTrackPage from './pages/caseTrackingPage';
 
 function App() {
   return (
@@ -46,6 +46,9 @@ function App() {
             </Route>
             <Route path="/profile">
               <ProfilePage/>
+            </Route>
+            <Route path="/tracker">
+              <CaseTrackPage/>
             </Route>
           </Switch>
         </Router>
