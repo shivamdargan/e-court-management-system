@@ -142,14 +142,12 @@ router.post('/new/case', auth ,caseImage.array('caseImage',3), async(req,res) =>
 })
 
 router.get('/dashboard/profile', auth, async (req,res) => {
-  console.log("Hello")
   let userId = req.user._id;
   let profileInfo = await User.findById(userId);
   console.log(profileInfo);
   let cases = [] 
   let hDate; 
     if(req.user.type === 'judge'){
-      console.log("INnn")
       if(profileInfo.noOfCases > 0)
       {
         const judgeCaseIds = profileInfo.assignedCaseIds;
@@ -160,11 +158,7 @@ router.get('/dashboard/profile', auth, async (req,res) => {
           const dCriminal = judgeCase.dangerousCriminal;
           const date = judgeCase.date;
           let diff;
-          // if(judgeCase.lastHearingDate){
-            // diff = Math.floor((judgeCase.lastHearingDate - date)/(24*60*60*1000));
-          // }else{
-            diff = Math.floor((Date.now() - date)/(24*60*60*1000));
-          // }
+          diff = Math.floor((Date.now() - date)/(24*60*60*1000));
           const ml = require('../ml');
           ml.start(dCriminal, diff, async function(result) {
             
@@ -180,9 +174,7 @@ router.get('/dashboard/profile', auth, async (req,res) => {
         setTimeout(function() {
 
           console.log('here',myMap.values())
-          // sort by value
           const mapSort = new Map([...myMap.entries()].sort((a, b) => b[1] - a[1]));
-          // console.log(mapSort);
 
           let jCases = Array.from( mapSort.keys() );
           jCases.forEach(jCase => {
@@ -203,24 +195,18 @@ router.get('/dashboard/profile', auth, async (req,res) => {
             });
           });
 
-          console.log("hi",cases);
           profileInfo = {
             ...profileInfo,
             cases
           }
-          // console.log("Mesasge",profileInfo);
-    
-          // profileInfo.assign(profileInfo,cases)
+
+
           res.status(200).send(profileInfo);
           
         },14000)
       }
     }else{
-      // let userId = req.user._id;
-      // let profileInfo = await User.findById(userId);
-      // console.log(profileInfo);
-      // let cases = []
-      // let hDate;
+
       if(profileInfo.noOfCases > 0)
       {
         const judgeCaseIds = profileInfo.assignedCaseIds;

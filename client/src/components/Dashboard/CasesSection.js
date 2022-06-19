@@ -30,7 +30,6 @@ const CasesSection = (props) => {
             } 
             else
             {
-                console.log("Helloasdj")
                 console.log(dashCases)
                 setLoading(false);
                 (dashCases.cases).map((dashCase) => { 

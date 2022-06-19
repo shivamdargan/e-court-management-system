@@ -12,7 +12,6 @@ const CaseCards=(props) =>{
 
     return (
         <div className='card'>
-            {/* {redirectPage} */}
             <div className='date'>
                 <h4>{props.d}</h4>
             </div>
@@ -20,12 +19,6 @@ const CaseCards=(props) =>{
                 <h2>{props.t}</h2>
                 <a href = {URL} ><p> {props.l === "Hearing Date not assigned yet" ? props.l :  <Moment format="YYYY/MM/DD HH:mm">{props.l}</Moment>}</p></a>
             </div>
-            {/* <div className='schedule-btn'>
-                <button disabled={props.status}>Schedule</button>
-            </div> */}
-            {/* <Button variant="primary" onClick={() => setModalShow(true)}>
-                Launch vertically centered modal
-            </Button> */}
             
         </div>
         
